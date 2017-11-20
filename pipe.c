@@ -15,21 +15,8 @@ int main(){
 
    pipe(fds);
    pipe(fds1);
-   f = fork();// if you pipe after fork, the parent can't talk to its kid bc parent's
-   //gonna pipe and child will pipe -- separate
-
-//    if (f==0){
-//        close(fds[READ]);//sending
-//        char s[10] = "whakjs";
-//        write(fds[WRITE], s, sizeof(s));
-//    }
-//    else{
-//        close(fds[WRITE]);//receiving
-//        char s[10];
-//        read(fds[READ], s, sizeof(s));
-//        printf("parent got [%s]\n", s);
-//    }
-    if (f){//parent
+   f = fork();
+   if (f){//parent
         close(fds[READ]);//sending to child
         int send[1];
         send[0]=29;
